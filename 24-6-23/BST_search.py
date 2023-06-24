@@ -1,50 +1,46 @@
-s=[]
 class Node:
-    def __init__(self,key):
+    def _init_(self,key):
         self.left=None
         self.right=None
         self.val=key
-        
 def insert(root,key):
     if root is None:
         return Node(key)
     else:
-        if root.val == key:
-            return root 
-        elif root.val <key:
+        if root.val==key:
+            return root
+        elif root.val<key:
             root.right=insert(root.right,key)
         else:
             root.left=insert(root.left,key)
-    return root 
+        return root
 
 def inorder(root):
     if root:
         inorder(root.left)
-        print(root.val)
-        s.append(root.val)
+        print(root.val,end=" ")
         inorder(root.right)
+def search(root,key):
+    if root is None or root.val==key:
+        return root
+    if root.val<key:
+        return search(root.right,key)
+    return search(root.left,key)
+
+
+n=int(input("enter the size"))
+for i in range(0,n):
+    if i==0:
+        r=Node(int(input("enter  element")))
         
-def search(root):
-    key=int(input('Enter the Search Element: '))
-    if root is None or root.val == key:
-        print('Found')
-        return root 
-    
-    if root.val< key:
-        print('Not Found')
-        return search(root.right)
-   
-    return search(root.left)
-  
-   
-r=Node(50)
-r=insert(r,100)
-r=insert(r,70)
-r=insert(r,50)
-r=insert(r,60)
-r=insert(r,9)
-r=insert(r,-3)
-# r=insert(r,75)
-# r=insert(r,78)
+    else:
+        r=insert(r,int(input("enter element")))
+print("Inorder of Created BST:",end=" ")
 inorder(r)
-search(r)
+se=int(input("enter the element to search"))
+re=search(r,se)
+print("")
+if re:
+    print("Found")
+else:
+    print("Not Found")
