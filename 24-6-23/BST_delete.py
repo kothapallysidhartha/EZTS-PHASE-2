@@ -43,4 +43,20 @@ def deleteNode(root,key):
     temp=minvalueNode(root.right)
     root.key=temp.key
     root.right=deleteNode(root.right,temp.key)
-    
+return root
+root=None
+root=insert(root,50)
+root=insert(root,3)
+root=insert(root,80)
+root=insert(root,120)
+root=insert(root,950)
+root=insert(root,681)
+print("\ninorder")
+inorder(root)
+print("\ndelete 80")
+root=deleteNode(root,80)
+print("Inorder :modified tree\n")
+inorder(root)
+root=deleteNode(root,120)
+print("Inorder :modified tree\n")
+inorder(root)
