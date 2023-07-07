@@ -16,7 +16,6 @@ class Graph:
     def print_adj_list(self):
         for key in self.m_adj_list.keys():
             print('Node',key,' : ',self.m_adj_list[key])
-
 graph=Graph(5)
 graph.add_edge(0,0,25)
 graph.add_edge(0,1,5)
